@@ -60,8 +60,8 @@ export default function App() {
   const [adminStatusFilter, setAdminStatusFilter] = useState("all");
   
   // Google Spreadsheet states
-  const [spreadsheetUrl, setSpreadsheetUrl] = useState("");
-  const [autoSync, setAutoSync] = useState(false);
+  const [spreadsheetUrl, setSpreadsheetUrl] = useState("https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec");
+  const [autoSync, setAutoSync] = useState(true);
   const [sheetMsg, setSheetMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [syncAllLoading, setSyncAllLoading] = useState(false);
   const [pullLoading, setPullLoading] = useState(false);
@@ -230,36 +230,80 @@ export default function App() {
     };
   };
 
-  const loadStaticModeData = () => {
+  const loadStaticModeData = async () => {
     let storedRegs = localStorage.getItem("registrations");
     let storedAccounts = localStorage.getItem("accounts");
     let storedConfig = localStorage.getItem("spreadsheetConfig");
 
     let regs: Registration[] = [];
     let accs: any[] = [];
-    let config = { spreadsheetUrl: "", autoSync: false };
-
-    if (storedRegs) {
-      regs = JSON.parse(storedRegs);
-    } else {
-      regs = seedData.registrations;
-      localStorage.setItem("registrations", JSON.stringify(regs));
-    }
-
-    if (storedAccounts) {
-      accs = JSON.parse(storedAccounts);
-    } else {
-      accs = seedData.accounts;
-      localStorage.setItem("accounts", JSON.stringify(accs));
-    }
+    let config = { 
+      spreadsheetUrl: "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec", 
+      autoSync: true 
+    };
 
     if (storedConfig) {
-      config = JSON.parse(storedConfig);
+      try {
+        config = JSON.parse(storedConfig);
+      } catch (e) {}
+    }
+
+    const activeUrl = config.spreadsheetUrl || "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec";
+    setSpreadsheetUrl(activeUrl);
+    setAutoSync(config.autoSync !== undefined ? !!config.autoSync : true);
+
+    let loadedFromSheets = false;
+    if (activeUrl) {
+      try {
+        console.log("Menghubungkan langsung ke Google Sheets:", activeUrl);
+        const response = await fetch(activeUrl, { method: "GET" });
+        if (response.ok) {
+          const resData = await response.json();
+          if (resData.status === "success" && Array.isArray(resData.registrations)) {
+            regs = resData.registrations;
+            localStorage.setItem("registrations", JSON.stringify(regs));
+            
+            // Rebuild accounts from registrations if they contain passwords
+            const newAccs: any[] = [];
+            regs.forEach((r: any) => {
+              if (r.password) {
+                newAccs.push({ nama_akun: r.nama_sekolah, password: r.password });
+              }
+            });
+            // Merge with seed accounts to ensure default admin account exists
+            seedData.accounts.forEach((acc) => {
+              if (!newAccs.some(na => na.nama_akun.toLowerCase() === acc.nama_akun.toLowerCase())) {
+                newAccs.push(acc);
+              }
+            });
+            accs = newAccs;
+            localStorage.setItem("accounts", JSON.stringify(accs));
+            loadedFromSheets = true;
+            console.log("Penyimpanan lokal berhasil disinkronkan langsung dari Google Sheets pada saat load!");
+          }
+        }
+      } catch (e) {
+        console.warn("Gagal sinkronisasi awal dari Google Sheets, menggunakan cache lokal atau seed:", e);
+      }
+    }
+
+    if (!loadedFromSheets) {
+      if (storedRegs) {
+        regs = JSON.parse(storedRegs);
+      } else {
+        regs = seedData.registrations;
+        localStorage.setItem("registrations", JSON.stringify(regs));
+      }
+
+      if (storedAccounts) {
+        accs = JSON.parse(storedAccounts);
+      } else {
+        accs = seedData.accounts;
+        localStorage.setItem("accounts", JSON.stringify(accs));
+      }
     }
 
     setPangkalanList(regs.map((r) => r.nama_sekolah));
-    setSpreadsheetUrl(config.spreadsheetUrl || "");
-    setAutoSync(!!config.autoSync);
   };
 
   // Fetch pangkalan list on load
@@ -280,7 +324,7 @@ export default function App() {
     } catch (err) {
       console.log("Menggunakan mode static (GitHub Pages)...");
       setIsStaticMode(true);
-      loadStaticModeData();
+      await loadStaticModeData();
     }
   };
 

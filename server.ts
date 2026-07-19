@@ -34,7 +34,11 @@ function initDatabase() {
       const data = fs.readFileSync(DB_PATH, "utf8");
       db = JSON.parse(data);
       if (!db.config) {
-        db.config = { spreadsheetUrl: "", autoSync: false };
+        db.config = { spreadsheetUrl: "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec", autoSync: true };
+      }
+      if (!db.config.spreadsheetUrl) {
+        db.config.spreadsheetUrl = "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec";
+        db.config.autoSync = true;
       }
     } else {
       console.log("Database file not found. Seeding from src/seed.json...");
@@ -42,12 +46,16 @@ function initDatabase() {
         const seedData = fs.readFileSync(SEED_PATH, "utf8");
         db = JSON.parse(seedData);
         if (!db.config) {
-          db.config = { spreadsheetUrl: "", autoSync: false };
+          db.config = { spreadsheetUrl: "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec", autoSync: true };
+        }
+        if (!db.config.spreadsheetUrl) {
+          db.config.spreadsheetUrl = "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec";
+          db.config.autoSync = true;
         }
         console.log("Database successfully seeded!");
       } else {
         console.warn("Seed file not found! Starting with empty database.");
-        db = { registrations: [], accounts: [], config: { spreadsheetUrl: "", autoSync: false } };
+        db = { registrations: [], accounts: [], config: { spreadsheetUrl: "https://script.google.com/macros/s/AKfycbzW98OoMJec6qDtuPw9ZBLQCyoA01pAMwU3eUADzEeuGEelaJfgTy2hhAo3utsbWTvS/exec", autoSync: true } };
       }
     }
 
