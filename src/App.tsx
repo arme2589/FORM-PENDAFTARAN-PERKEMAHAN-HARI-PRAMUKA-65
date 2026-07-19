@@ -30,6 +30,7 @@ import {
   Trash2
 } from "lucide-react";
 import { Registration, AdminDashboardData } from "./types";
+import seedData from "./seed.json";
 
 export default function App() {
   const [pangkalanList, setPangkalanList] = useState<string[]>([]);
@@ -63,6 +64,7 @@ export default function App() {
   const [autoSync, setAutoSync] = useState(false);
   const [sheetMsg, setSheetMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [syncAllLoading, setSyncAllLoading] = useState(false);
+  const [pullLoading, setPullLoading] = useState(false);
   
   // Modal & view states
   const [activeView, setActiveView] = useState<"login" | "form" | "bukti" | "admin">("login");
@@ -94,6 +96,172 @@ export default function App() {
   const [deleteReg, setDeleteReg] = useState<Registration | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
+  // Static-mode state indicators
+  const [isStaticMode, setIsStaticMode] = useState(false);
+
+  const calculateAdminDashboardLocal = (registrations: Registration[]) => {
+    let totalRegistered = 0;
+    let sd_mi = 0;
+    let smp_mts = 0;
+    let sma_smk_ma = 0;
+
+    let totalPutra = 0;
+    let totalPutri = 0;
+
+    let tendaPutra = 0;
+    let tendaPutri = 0;
+    let totalTenda = 0;
+
+    let tendaPutraSdMi = 0;
+    let tendaPutraSmpMts = 0;
+    let tendaPutraSmaSmkMa = 0;
+
+    let tendaPutriSdMi = 0;
+    let tendaPutriSmpMts = 0;
+    let tendaPutriSmaSmkMa = 0;
+
+    const catatanList: Array<{ sekolah: string; catatan: string }> = [];
+
+    registrations.forEach((r) => {
+      const hasPa = r.jumlah_peserta_putra && r.jumlah_peserta_putra.trim() !== "" && r.jumlah_peserta_putra.trim().toLowerCase() !== "tidak ada";
+      const hasPi = r.jumlah_peserta_putri && r.jumlah_peserta_putri.trim() !== "" && r.jumlah_peserta_putri.trim().toLowerCase() !== "tidak ada";
+      
+      const isRegistered = (r.jumlah_peserta_putra && r.jumlah_peserta_putra !== "") ||
+                           (r.jumlah_peserta_putri && r.jumlah_peserta_putri !== "") ||
+                           (r.jumlah_tenda && r.jumlah_tenda !== "");
+
+      if (isRegistered) {
+        totalRegistered++;
+
+        const name = r.nama_sekolah.toUpperCase();
+        let schoolLevel = "sd_mi";
+        if (name.includes("SD ") || name.includes("SDN ") || name.includes("MI ") || name.includes("MIN ")) {
+          sd_mi++;
+          schoolLevel = "sd_mi";
+        } else if (name.includes("SMP ") || name.includes("SMPN ") || name.includes("MTS ") || name.includes("MTSS ")) {
+          smp_mts++;
+          schoolLevel = "smp_mts";
+        } else if (name.includes("SMA ") || name.includes("SMK ") || name.includes("MA ") || name.includes("MAS ") || name.includes("MAN ")) {
+          sma_smk_ma++;
+          schoolLevel = "sma_smk_ma";
+        } else {
+          sd_mi++;
+          schoolLevel = "sd_mi";
+        }
+
+        if (hasPa) {
+          const count = parseInt(r.jumlah_peserta_putra, 10);
+          if (!isNaN(count)) totalPutra += count;
+        }
+        if (hasPi) {
+          const count = parseInt(r.jumlah_peserta_putri, 10);
+          if (!isNaN(count)) totalPutri += count;
+        }
+
+        const tendaStr = (r.jumlah_tenda || "").toLowerCase();
+        let addedToPutra = false;
+        let addedToPutri = false;
+
+        if (tendaStr.includes("2 tenda") || tendaStr.includes("putra dan putri") || tendaStr.includes("pa dan pi")) {
+          if (hasPi) {
+            tendaPutri += 1;
+            addedToPutri = true;
+          }
+          if (hasPa || !hasPi) {
+            tendaPutra += 1;
+            addedToPutra = true;
+          }
+        } else if (tendaStr.includes("kapling putra") || tendaStr.includes("kapling pa") || tendaStr.includes("putra") || tendaStr.includes("pa")) {
+          tendaPutra += 1;
+          addedToPutra = true;
+        } else if (tendaStr.includes("kapling putri") || tendaStr.includes("kapling pi") || tendaStr.includes("putri") || tendaStr.includes("pi")) {
+          tendaPutri += 1;
+          addedToPutri = true;
+        }
+
+        if (addedToPutra) {
+          if (schoolLevel === "sd_mi") tendaPutraSdMi++;
+          else if (schoolLevel === "smp_mts") tendaPutraSmpMts++;
+          else if (schoolLevel === "sma_smk_ma") tendaPutraSmaSmkMa++;
+        }
+        if (addedToPutri) {
+          if (schoolLevel === "sd_mi") tendaPutriSdMi++;
+          else if (schoolLevel === "smp_mts") tendaPutriSmpMts++;
+          else if (schoolLevel === "sma_smk_ma") tendaPutriSmaSmkMa++;
+        }
+
+        if (r.catatan && r.catatan.trim() !== "") {
+          catatanList.push({
+            sekolah: r.nama_sekolah,
+            catatan: r.catatan,
+          });
+        }
+      }
+    });
+
+    totalTenda = tendaPutra + tendaPutri;
+
+    return {
+      totalRegistered,
+      sd_mi,
+      smp_mts,
+      sma_smk_ma,
+      totalPutra,
+      totalPutri,
+      tendaPutra,
+      tendaPutri,
+      totalTenda,
+      tendaPutraDetail: {
+        sd_mi: tendaPutraSdMi,
+        smp_mts: tendaPutraSmpMts,
+        sma_smk_ma: tendaPutraSmaSmkMa
+      },
+      tendaPutriDetail: {
+        sd_mi: tendaPutriSdMi,
+        smp_mts: tendaPutriSmpMts,
+        sma_smk_ma: tendaPutriSmaSmkMa
+      },
+      tendaTotalDetail: {
+        sd_mi: tendaPutraSdMi + tendaPutriSdMi,
+        smp_mts: tendaPutraSmpMts + tendaPutriSmpMts,
+        sma_smk_ma: tendaPutraSmaSmkMa + tendaPutriSmaSmkMa
+      },
+      catatanList
+    };
+  };
+
+  const loadStaticModeData = () => {
+    let storedRegs = localStorage.getItem("registrations");
+    let storedAccounts = localStorage.getItem("accounts");
+    let storedConfig = localStorage.getItem("spreadsheetConfig");
+
+    let regs: Registration[] = [];
+    let accs: any[] = [];
+    let config = { spreadsheetUrl: "", autoSync: false };
+
+    if (storedRegs) {
+      regs = JSON.parse(storedRegs);
+    } else {
+      regs = seedData.registrations;
+      localStorage.setItem("registrations", JSON.stringify(regs));
+    }
+
+    if (storedAccounts) {
+      accs = JSON.parse(storedAccounts);
+    } else {
+      accs = seedData.accounts;
+      localStorage.setItem("accounts", JSON.stringify(accs));
+    }
+
+    if (storedConfig) {
+      config = JSON.parse(storedConfig);
+    }
+
+    setPangkalanList(regs.map((r) => r.nama_sekolah));
+    setSpreadsheetUrl(config.spreadsheetUrl || "");
+    setAutoSync(!!config.autoSync);
+  };
+
   // Fetch pangkalan list on load
   useEffect(() => {
     fetchPangkalanList();
@@ -105,9 +273,14 @@ export default function App() {
       if (res.ok) {
         const list = await res.json();
         setPangkalanList(list);
+        setIsStaticMode(false);
+      } else {
+        throw new Error("HTTP error");
       }
     } catch (err) {
-      console.error("Gagal memuat daftar pangkalan:", err);
+      console.log("Menggunakan mode static (GitHub Pages)...");
+      setIsStaticMode(true);
+      loadStaticModeData();
     }
   };
 
@@ -117,13 +290,69 @@ export default function App() {
       setLoginError("Silakan pilih pangkalan terlebih dahulu.");
       return;
     }
-    if (!password) {
+    if (selectedPangkalan === "admin" && !password) {
       setLoginError("Silakan masukkan kata sandi.");
       return;
     }
 
     setLoading(true);
     setLoginError(null);
+
+    if (isStaticMode) {
+      try {
+        let matched = false;
+        let role: "peserta" | "admin" = "peserta";
+        let regDataMatched: Registration | null = null;
+
+        if (selectedPangkalan === "admin") {
+          role = "admin";
+          const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+          const adminAccount = accounts.find((acc: any) => acc.nama_akun === "admin");
+          const adminPassword = adminAccount ? adminAccount.password : "admin123";
+          if (password === adminPassword) {
+            matched = true;
+          }
+        } else {
+          role = "peserta";
+          const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+          const matchedReg = regs.find((r) => r.nama_sekolah === selectedPangkalan);
+          matched = true;
+          regDataMatched = matchedReg || null;
+        }
+
+        if (matched) {
+          setCurrentUser(selectedPangkalan);
+          setCurrentRole(role);
+
+          if (role === "admin") {
+            setActiveView("admin");
+            const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+            setAdminData(calculateAdminDashboardLocal(regs));
+          } else {
+            setActiveView("form");
+            if (regDataMatched) {
+              setRegData(regDataMatched);
+              setNamaKamabigus(regDataMatched.nama_kamabigus !== "-" ? regDataMatched.nama_kamabigus : "");
+              setNipKamabigus(regDataMatched.nip_kamabigus !== "-" ? regDataMatched.nip_kamabigus : "");
+              setJmlPutra(regDataMatched.jumlah_peserta_putra || "Tidak ada");
+              setJmlPutri(regDataMatched.jumlah_peserta_putri || "Tidak ada");
+              setJmlTenda(regDataMatched.jumlah_tenda || "");
+              setCatatan(regDataMatched.catatan || "");
+            } else {
+              setRegData(null);
+              resetForm();
+            }
+          }
+        } else {
+          setLoginError("Kata sandi salah atau pangkalan tidak ditemukan.");
+        }
+      } catch (err) {
+        setLoginError("Gagal masuk. Silakan coba kembali.");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
 
     try {
       const res = await fetch("/api/login", {
@@ -177,6 +406,24 @@ export default function App() {
     setFormSuccess(false);
   };
 
+  const pushToSpreadsheetDirectly = async (reg: Registration) => {
+    if (!spreadsheetUrl) return;
+    try {
+      const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+      const account = accounts.find((acc: any) => acc.nama_akun.trim().toLowerCase() === reg.nama_sekolah.trim().toLowerCase());
+      const payload = {
+        ...reg,
+        password: account ? account.password : ""
+      };
+      await fetch(spreadsheetUrl, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {
+      console.error("Gagal menyinkronkan data langsung ke Google Sheets:", e);
+    }
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) return;
@@ -187,6 +434,44 @@ export default function App() {
 
     setLoading(true);
     setFormError(null);
+
+    if (isStaticMode) {
+      try {
+        const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        const r = regs.find((reg) => reg.nama_sekolah === currentUser);
+        
+        const generatedPa = r?.kode_pa || String(Math.floor(10000 + Math.random() * 90000));
+        const generatedPi = r?.kode_pi || String(Math.floor(10000 + Math.random() * 90000));
+
+        const updatedReg: Registration = {
+          id: r?.id || "PKL" + String(Math.floor(100 + Math.random() * 900)),
+          nama_sekolah: currentUser,
+          nama_kamabigus: namaKamabigus || "-",
+          nip_kamabigus: nipKamabigus || "-",
+          jumlah_peserta_putra: jmlPutra,
+          jumlah_peserta_putri: jmlPutri,
+          jumlah_tenda: jmlTenda,
+          catatan,
+          kode_pa: generatedPa,
+          kode_pi: generatedPi,
+        };
+
+        const updatedRegs = regs.map((reg) => reg.nama_sekolah === currentUser ? updatedReg : reg);
+        localStorage.setItem("registrations", JSON.stringify(updatedRegs));
+        setRegData(updatedReg);
+        setFormSuccess(true);
+        setActiveView("bukti");
+
+        if (autoSync && spreadsheetUrl) {
+          await pushToSpreadsheetDirectly(updatedReg);
+        }
+      } catch (err) {
+        setFormError("Gagal menyimpan pendaftaran secara lokal.");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
 
     try {
       const res = await fetch("/api/submit-pendaftaran", {
@@ -242,6 +527,50 @@ export default function App() {
     setLoading(true);
     setPasswordModalMsg(null);
 
+    if (isStaticMode) {
+      try {
+        const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+        const accountIndex = accounts.findIndex((acc: any) => acc.nama_akun.trim().toLowerCase() === currentUser.trim().toLowerCase());
+        
+        const currentPass = accountIndex !== -1 ? accounts[accountIndex].password : (currentUser === "admin" ? "admin123" : "sandi123");
+
+        if (oldPassword !== currentPass) {
+          setPasswordModalMsg({ type: "error", text: "Sandi lama salah." });
+          setLoading(false);
+          return;
+        }
+
+        if (accountIndex !== -1) {
+          accounts[accountIndex].password = newPassword;
+        } else {
+          accounts.push({ nama_akun: currentUser, password: newPassword });
+        }
+
+        localStorage.setItem("accounts", JSON.stringify(accounts));
+        setPasswordModalMsg({ type: "success", text: "Sandi berhasil diubah!" });
+        setOldPassword("");
+        setNewPassword("");
+
+        if (currentUser !== "admin" && autoSync && spreadsheetUrl) {
+          const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+          const r = regs.find((reg) => reg.nama_sekolah === currentUser);
+          if (r) {
+            await pushToSpreadsheetDirectly(r);
+          }
+        }
+
+        setTimeout(() => {
+          setIsChangePasswordOpen(false);
+          setPasswordModalMsg(null);
+        }, 1500);
+      } catch (err) {
+        setPasswordModalMsg({ type: "error", text: "Gagal mengubah sandi." });
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/change-password", {
         method: "POST",
@@ -275,6 +604,22 @@ export default function App() {
 
   const fetchAdminDashboard = async () => {
     setLoading(true);
+    if (isStaticMode) {
+      try {
+        const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        setAdminData(calculateAdminDashboardLocal(regs));
+        
+        const config = JSON.parse(localStorage.getItem("spreadsheetConfig") || "{}");
+        setSpreadsheetUrl(config.spreadsheetUrl || "");
+        setAutoSync(!!config.autoSync);
+      } catch (err) {
+        console.error("Gagal memuat dashboard lokal:", err);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/admin-dashboard");
       if (res.ok) {
@@ -299,6 +644,19 @@ export default function App() {
     e.preventDefault();
     setLoading(true);
     setSheetMsg(null);
+
+    if (isStaticMode) {
+      try {
+        localStorage.setItem("spreadsheetConfig", JSON.stringify({ spreadsheetUrl, autoSync }));
+        setSheetMsg({ type: "success", text: "Pengaturan integrasi berhasil disimpan secara lokal." });
+      } catch (err) {
+        setSheetMsg({ type: "error", text: "Gagal menyimpan pengaturan lokal." });
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/spreadsheet-config", {
         method: "POST",
@@ -325,6 +683,31 @@ export default function App() {
     }
     setSyncAllLoading(true);
     setSheetMsg(null);
+
+    if (isStaticMode) {
+      try {
+        const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        let successCount = 0;
+        for (const r of regs) {
+          try {
+            await pushToSpreadsheetDirectly(r);
+            successCount++;
+          } catch (err) {
+            console.error(`Gagal sinkron pangkalan ${r.nama_sekolah}:`, err);
+          }
+        }
+        setSheetMsg({
+          type: "success",
+          text: `Sinkronisasi selesai! ${successCount} data pangkalan berhasil disinkronkan langsung ke Google Spreadsheet.`,
+        });
+      } catch (err) {
+        setSheetMsg({ type: "error", text: "Gagal melakukan sinkronisasi mandiri." });
+      } finally {
+        setSyncAllLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/sync-all-to-spreadsheet", {
         method: "POST",
@@ -339,6 +722,102 @@ export default function App() {
       setSheetMsg({ type: "error", text: "Gagal terhubung ke server untuk sinkronisasi." });
     } finally {
       setSyncAllLoading(false);
+    }
+  };
+
+  const handlePullFromSpreadsheet = async () => {
+    if (!spreadsheetUrl) {
+      setSheetMsg({ type: "error", text: "Silakan masukkan URL Google Sheets terlebih dahulu." });
+      return;
+    }
+    setPullLoading(true);
+    setSheetMsg(null);
+
+    if (isStaticMode) {
+      try {
+        const response = await fetch(spreadsheetUrl, { method: "GET" });
+        if (!response.ok) {
+          throw new Error(`Status ${response.status}`);
+        }
+        const resData = await response.json();
+        if (resData.status !== "success" || !Array.isArray(resData.registrations)) {
+          throw new Error(resData.message || "Format data tidak valid.");
+        }
+
+        const fetchedRegs = resData.registrations;
+        const localRegs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        const localAccounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+        let updatedCount = 0;
+
+        fetchedRegs.forEach((fetched: any) => {
+          if (!fetched || !fetched.nama_sekolah) return;
+
+          let localReg = localRegs.find(
+            (r) => r.nama_sekolah.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+          );
+
+          if (localReg) {
+            localReg.nama_kamabigus = fetched.nama_kamabigus || "-";
+            localReg.nip_kamabigus = fetched.nip_kamabigus || "-";
+            localReg.jumlah_peserta_putra = fetched.jumlah_peserta_putra || "";
+            localReg.jumlah_peserta_putri = fetched.jumlah_peserta_putri || "";
+            localReg.jumlah_tenda = fetched.jumlah_tenda || "";
+            localReg.catatan = fetched.catatan || "";
+            localReg.kode_pa = fetched.kode_pa || localReg.kode_pa;
+            localReg.kode_pi = fetched.kode_pi || localReg.kode_pi;
+            updatedCount++;
+          } else {
+            localRegs.push(fetched);
+            updatedCount++;
+          }
+
+          if (fetched.password) {
+            const accIndex = localAccounts.findIndex(
+              (acc: any) => acc.nama_akun.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+            );
+            if (accIndex !== -1) {
+              localAccounts[accIndex].password = fetched.password;
+            } else {
+              localAccounts.push({ nama_akun: fetched.nama_sekolah, password: fetched.password });
+            }
+          }
+        });
+
+        localStorage.setItem("registrations", JSON.stringify(localRegs));
+        localStorage.setItem("accounts", JSON.stringify(localAccounts));
+
+        setSheetMsg({
+          type: "success",
+          text: `Berhasil menarik data langsung! ${updatedCount} data pangkalan telah disinkronkan ke penyimpanan lokal browser Anda.`,
+        });
+
+        // Refresh lists and state
+        setPangkalanList(localRegs.map((r) => r.nama_sekolah));
+        setAdminData(calculateAdminDashboardLocal(localRegs));
+      } catch (err: any) {
+        console.error("Error pulling from spreadsheet directly:", err);
+        setSheetMsg({ type: "error", text: `Gagal menarik data langsung dari Google Sheets: ${err.message}` });
+      } finally {
+        setPullLoading(false);
+      }
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/pull-from-spreadsheet", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSheetMsg({ type: "success", text: data.message });
+        await fetchAdminDashboard();
+      } else {
+        setSheetMsg({ type: "error", text: data.message || "Gagal menarik data dari spreadsheet." });
+      }
+    } catch (err) {
+      setSheetMsg({ type: "error", text: "Gagal terhubung ke server untuk menarik data." });
+    } finally {
+      setPullLoading(false);
     }
   };
 
@@ -363,6 +842,40 @@ export default function App() {
     }
     setLoading(true);
     setEditError(null);
+
+    if (isStaticMode) {
+      try {
+        const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        const updatedRegs = regs.map((reg) => {
+          if (reg.id === editReg.id) {
+            const updated = {
+              ...reg,
+              nama_kamabigus: editNamaKamabigus || "-",
+              nip_kamabigus: editNipKamabigus || "-",
+              jumlah_peserta_putra: editJmlPutra,
+              jumlah_peserta_putri: editJmlPutri,
+              jumlah_tenda: editJmlTenda,
+              catatan: editCatatan,
+            };
+            if (autoSync && spreadsheetUrl) {
+              pushToSpreadsheetDirectly(updated);
+            }
+            return updated;
+          }
+          return reg;
+        });
+        localStorage.setItem("registrations", JSON.stringify(updatedRegs));
+        setIsEditModalOpen(false);
+        setEditReg(null);
+        setAdminData(calculateAdminDashboardLocal(updatedRegs));
+      } catch (err) {
+        setEditError("Gagal menyimpan perubahan lokal.");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/admin/edit-registration", {
         method: "POST",
@@ -402,6 +915,40 @@ export default function App() {
     if (!deleteReg) return;
     setLoading(true);
     setDeleteError(null);
+
+    if (isStaticMode) {
+      try {
+        const regs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+        const updatedRegs = regs.map((reg) => {
+          if (reg.id === deleteReg.id) {
+            const updated = {
+              ...reg,
+              nama_kamabigus: "-",
+              nip_kamabigus: "-",
+              jumlah_peserta_putra: "",
+              jumlah_peserta_putri: "",
+              jumlah_tenda: "",
+              catatan: "",
+            };
+            if (autoSync && spreadsheetUrl) {
+              pushToSpreadsheetDirectly(updated);
+            }
+            return updated;
+          }
+          return reg;
+        });
+        localStorage.setItem("registrations", JSON.stringify(updatedRegs));
+        setIsDeleteModalOpen(false);
+        setDeleteReg(null);
+        setAdminData(calculateAdminDashboardLocal(updatedRegs));
+      } catch (err) {
+        setDeleteError("Gagal menghapus pendaftaran lokal.");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/api/admin/delete-registration", {
         method: "POST",
@@ -746,13 +1293,15 @@ export default function App() {
                 </span>
               </div>
               <div className="flex gap-2">
-                <button
-                  onClick={() => setIsChangePasswordOpen(true)}
-                  className="flex items-center gap-1.5 text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 py-2 px-3.5 rounded-xl border border-slate-200 transition-all duration-200 shadow-sm cursor-pointer"
-                >
-                  <Key className="w-3.5 h-3.5 text-slate-400" />
-                  Sandi
-                </button>
+                {currentUser === "admin" && (
+                  <button
+                    onClick={() => setIsChangePasswordOpen(true)}
+                    className="flex items-center gap-1.5 text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 py-2 px-3.5 rounded-xl border border-slate-200 transition-all duration-200 shadow-sm cursor-pointer"
+                  >
+                    <Key className="w-3.5 h-3.5 text-slate-400" />
+                    Sandi
+                  </button>
+                )}
                 <button
                   onClick={logout}
                   className="flex items-center gap-1.5 text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 py-2 px-3.5 rounded-xl border border-rose-100 transition-all duration-200 shadow-sm cursor-pointer"
@@ -774,18 +1323,15 @@ export default function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md bg-white border border-slate-200 shadow-xl rounded-3xl p-6 md:p-10 relative overflow-hidden"
+            className="w-full max-w-md bg-white border border-slate-200 shadow-xl rounded-3xl p-6 md:p-10 relative"
           >
             {/* Design accents */}
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600"></div>
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 rounded-t-3xl"></div>
 
-            <div className="text-center mb-8">
-              <div className="inline-flex p-3 bg-indigo-50 rounded-2xl border border-indigo-100 text-indigo-600 mb-4">
-                <Shield className="w-8 h-8" />
-              </div>
+            <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-slate-900 tracking-tight font-display">Masuk Aplikasi</h2>
               <p className="text-sm text-slate-500 mt-2 font-medium">
-                Pilih Pangkalan Sekolah Anda & Masukkan Kata Sandi
+                Pilih Pangkalan Sekolah Anda, lalu klik tombol "Masuk"
               </p>
             </div>
 
@@ -838,7 +1384,7 @@ export default function App() {
                       </div>
 
                       {/* Dropdown Options List */}
-                      <div className="max-h-56 overflow-y-auto divide-y divide-slate-100">
+                      <div style={{ maxHeight: "350px", overflowY: "auto" }} className="divide-y divide-slate-100">
                         <button
                           type="button"
                           onClick={() => {
@@ -880,29 +1426,25 @@ export default function App() {
                 </div>
               </div>
 
-              {/* PASSWORD FIELD */}
-              <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
-                  Kata Sandi
-                </label>
-                <div className="relative">
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="w-full bg-slate-50 text-slate-800 placeholder-slate-400 border border-slate-200 rounded-xl p-3.5 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition outline-none font-medium"
-                    placeholder="Masukkan kata sandi"
-                  />
-                  <Lock className="w-4 h-4 text-slate-400 absolute right-4 top-4.5" />
-                </div>
-                {selectedPangkalan && selectedPangkalan !== "admin" && (
-                  <div className="text-[11px] text-amber-800 bg-amber-50 border border-amber-150 rounded-xl p-3 mt-2 flex items-center gap-1.5 font-semibold">
-                    <Info className="w-3.5 h-3.5 shrink-0 text-amber-600" />
-                    <span>Sandi default untuk pangkalan adalah <strong className="text-amber-700">pramuka</strong></span>
+              {/* PASSWORD FIELD (ONLY FOR ADMIN) */}
+              {selectedPangkalan === "admin" && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                    Kata Sandi Admin
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      className="w-full bg-slate-50 text-slate-800 placeholder-slate-400 border border-slate-200 rounded-xl p-3.5 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition outline-none font-medium"
+                      placeholder="Masukkan kata sandi admin"
+                    />
+                    <Lock className="w-4 h-4 text-slate-400 absolute right-4 top-4.5" />
                   </div>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* SUBMIT BUTTON */}
               <button
@@ -1692,6 +2234,15 @@ export default function App() {
                   >
                     {syncAllLoading ? "Menyinkronkan..." : "Sinkronkan Semua Data Sekarang"}
                   </button>
+
+                  <button
+                    type="button"
+                    onClick={handlePullFromSpreadsheet}
+                    disabled={pullLoading || !spreadsheetUrl}
+                    className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2.5 px-5 rounded-xl transition duration-150 shadow-sm cursor-pointer disabled:opacity-50"
+                  >
+                    {pullLoading ? "Menarik..." : "Tarik Data Dari Spreadsheet"}
+                  </button>
                 </div>
               </form>
 
@@ -1699,14 +2250,14 @@ export default function App() {
               <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 text-xs text-slate-600 space-y-3 leading-relaxed">
                 <div className="flex items-center gap-1.5 font-bold text-slate-800 uppercase tracking-wider text-[10px]">
                   <Info className="w-4 h-4 text-indigo-500" />
-                  <span>Panduan Setup Google Spreadsheet</span>
+                  <span>Panduan Setup Google Spreadsheet (Sinkronisasi Dua Arah)</span>
                 </div>
                 <ol className="list-decimal pl-4 space-y-1">
                   <li>Buat Google Spreadsheet baru.</li>
                   <li>Buka menu <strong>Ekstensi &gt; Apps Script</strong>.</li>
-                  <li>Hapus kode bawaan, lalu salin dan tempel kode berikut:</li>
+                  <li>Hapus kode bawaan, lalu salin dan tempel seluruh kode berikut:</li>
                 </ol>
-                <pre className="bg-slate-900 text-slate-300 p-4 rounded-xl overflow-x-auto text-[10px] font-mono leading-normal max-h-48">
+                <pre className="bg-slate-900 text-slate-300 p-4 rounded-xl overflow-x-auto text-[10px] font-mono leading-normal max-h-60">
 {`function doPost(e) {
   try {
     var json = JSON.parse(e.postData.contents);
@@ -1716,7 +2267,7 @@ export default function App() {
       sheet.appendRow([
         "ID", "Pangkalan", "Nama Kamabigus", "NIP Kamabigus", 
         "Jml Peserta Putra", "Jml Peserta Putri", "Jumlah Tenda", 
-        "Catatan", "Kode Login Putra", "Kode Login Putri", "Last Updated"
+        "Catatan", "Kode Login Putra", "Kode Login Putri", "Kata Sandi", "Last Updated"
       ]);
     }
     
@@ -1742,6 +2293,7 @@ export default function App() {
       json.catatan || "",
       json.kode_pa || json.kodePa || "",
       json.kode_pi || json.kodePi || "",
+      json.password || "",
       new Date().toLocaleString("id-ID")
     ];
     
@@ -1753,6 +2305,41 @@ export default function App() {
     }
     
     return ContentService.createTextOutput(JSON.stringify({ status: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = sheet.getDataRange().getValues();
+    if (data.length <= 1) {
+      return ContentService.createTextOutput(JSON.stringify({ status: "success", registrations: [] }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    var registrations = [];
+    for (var i = 1; i < data.length; i++) {
+      var row = data[i];
+      registrations.push({
+        id: row[0] ? row[0].toString() : "",
+        nama_sekolah: row[1] ? row[1].toString() : "",
+        nama_kamabigus: row[2] ? row[2].toString() : "-",
+        nip_kamabigus: row[3] ? row[3].toString() : "-",
+        jumlah_peserta_putra: row[4] ? row[4].toString() : "Tidak ada",
+        jumlah_peserta_putri: row[5] ? row[5].toString() : "Tidak ada",
+        jumlah_tenda: row[6] ? row[6].toString() : "",
+        catatan: row[7] ? row[7].toString() : "",
+        kode_pa: row[8] ? row[8].toString() : "",
+        kode_pi: row[9] ? row[9].toString() : "",
+        password: row[10] ? row[10].toString() : ""
+      });
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify({ status: "success", registrations: registrations }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))

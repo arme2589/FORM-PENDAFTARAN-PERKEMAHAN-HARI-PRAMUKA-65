@@ -79,10 +79,17 @@ async function syncToSpreadsheet(reg: any) {
     return;
   }
   try {
+    const account = db.accounts.find(
+      (acc) => acc.nama_akun.trim().toLowerCase() === reg.nama_sekolah.trim().toLowerCase()
+    );
+    const payload = {
+      ...reg,
+      password: account ? account.password : ""
+    };
     const response = await fetch(db.config.spreadsheetUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reg),
+      body: JSON.stringify(payload),
     });
     if (!response.ok) {
       console.error(`Spreadsheet sync failed with status ${response.status}`);
@@ -124,31 +131,39 @@ app.get("/api/pangkalan-list", (req, res) => {
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ success: false, message: "Pangkalan dan kata sandi diperlukan." });
+  if (!username) {
+    return res.status(400).json({ success: false, message: "Pangkalan/Username diperlukan." });
   }
 
-  // Find account case-insensitively
+  const role = username.trim().toLowerCase() === "admin" ? "admin" : "peserta";
+
+  if (role === "admin") {
+    if (!password) {
+      return res.status(400).json({ success: false, message: "Kata sandi diperlukan untuk Admin." });
+    }
+
+    const account = db.accounts.find(
+      (acc) => acc.nama_akun.trim().toLowerCase() === "admin"
+    );
+
+    if (!account || account.password !== password) {
+      return res.status(401).json({ success: false, message: "Kata sandi Admin salah." });
+    }
+
+    return res.json({
+      success: true,
+      role: "admin",
+      message: "Berhasil masuk sebagai Admin.",
+    });
+  }
+
+  // School login (no password needed)
   const account = db.accounts.find(
     (acc) => acc.nama_akun.trim().toLowerCase() === username.trim().toLowerCase()
   );
 
   if (!account) {
     return res.status(401).json({ success: false, message: "Pangkalan tidak ditemukan." });
-  }
-
-  if (account.password !== password) {
-    return res.status(401).json({ success: false, message: "Kata sandi salah." });
-  }
-
-  const role = username.toLowerCase() === "admin" ? "admin" : "peserta";
-
-  if (role === "admin") {
-    return res.json({
-      success: true,
-      role: "admin",
-      message: "Berhasil masuk sebagai Admin.",
-    });
   }
 
   // Find existing registration details
@@ -321,6 +336,14 @@ app.post("/api/change-password", (req, res) => {
 
   account.password = newPassword;
   saveDatabase();
+
+  // Sync to Spreadsheet immediately when password changes
+  const reg = db.registrations.find(
+    (r) => r.nama_sekolah.trim().toLowerCase() === username.trim().toLowerCase()
+  );
+  if (reg && db.config?.autoSync && db.config?.spreadsheetUrl) {
+    syncToSpreadsheet(reg);
+  }
 
   res.json({ success: true, message: "Kata sandi berhasil diubah." });
 });
@@ -506,10 +529,17 @@ app.post("/api/sync-all-to-spreadsheet", async (req, res) => {
 
   for (const reg of registrations) {
     try {
+      const account = db.accounts.find(
+        (acc) => acc.nama_akun.trim().toLowerCase() === reg.nama_sekolah.trim().toLowerCase()
+      );
+      const payload = {
+        ...reg,
+        password: account ? account.password : ""
+      };
       const response = await fetch(db.config.spreadsheetUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reg),
+        body: JSON.stringify(payload),
       });
       if (response.ok) {
         successCount++;
@@ -525,6 +555,76 @@ app.post("/api/sync-all-to-spreadsheet", async (req, res) => {
     success: true,
     message: `Sinkronisasi selesai. Berhasil: ${successCount}, Gagal: ${failCount}.`,
   });
+});
+
+// 9. Pull Registrations from Spreadsheet
+app.post("/api/pull-from-spreadsheet", async (req, res) => {
+  if (!db.config?.spreadsheetUrl) {
+    return res.status(400).json({ success: false, message: "URL Google Sheets belum dikonfigurasi." });
+  }
+
+  try {
+    const response = await fetch(db.config.spreadsheetUrl, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      return res.status(500).json({ success: false, message: `Gagal menarik data. Server Spreadsheet merespons dengan status ${response.status}` });
+    }
+
+    const resData = await response.json();
+    if (resData.status !== "success" || !Array.isArray(resData.registrations)) {
+      return res.status(500).json({ success: false, message: resData.message || "Format data dari spreadsheet tidak valid." });
+    }
+
+    const fetchedRegs = resData.registrations;
+    let updatedCount = 0;
+
+    fetchedRegs.forEach((fetched: any) => {
+      if (!fetched || !fetched.nama_sekolah) return;
+
+      // Find local registration to update
+      let localReg = db.registrations.find(
+        (r) => r.nama_sekolah.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+      );
+
+      if (localReg) {
+        // Update local registration
+        localReg.nama_kamabigus = fetched.nama_kamabigus || "-";
+        localReg.nip_kamabigus = fetched.nip_kamabigus || "-";
+        localReg.jumlah_peserta_putra = fetched.jumlah_peserta_putra || "";
+        localReg.jumlah_peserta_putri = fetched.jumlah_peserta_putri || "";
+        localReg.jumlah_tenda = fetched.jumlah_tenda || "";
+        localReg.catatan = fetched.catatan || "";
+        localReg.kode_pa = fetched.kode_pa || localReg.kode_pa;
+        localReg.kode_pi = fetched.kode_pi || localReg.kode_pi;
+        updatedCount++;
+      } else {
+        // Optionally insert if not found in local seed (failsafe)
+        db.registrations.push(fetched);
+        updatedCount++;
+      }
+
+      // Also update password if provided
+      if (fetched.password) {
+        const account = db.accounts.find(
+          (acc) => acc.nama_akun.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+        );
+        if (account) {
+          account.password = fetched.password;
+        }
+      }
+    });
+
+    saveDatabase();
+    res.json({
+      success: true,
+      message: `Berhasil menarik data! ${updatedCount} data pendaftaran pangkalan telah disinkronkan kembali ke server.`,
+    });
+  } catch (err: any) {
+    console.error("Error pulling from spreadsheet:", err);
+    res.status(500).json({ success: false, message: `Gagal menghubungi server Spreadsheet: ${err.message}` });
+  }
 });
 
 // Start server and handle Vite middleware
