@@ -1,0 +1,1446 @@
+{
+  "registrations": [
+    {
+      "id": "PKL001",
+      "nama_sekolah": "SD NEGERI 58 TANETE",
+      "nama_kamabigus": "NASRUL. A, S.Pd., M.Pd.",
+      "nip_kamabigus": "198307192007011004",
+      "jumlah_peserta_putra": "8",
+      "jumlah_peserta_putri": "tidak ada",
+      "jumlah_tenda": "1 tenda di kapling Putra",
+      "catatan": "",
+      "kode_pa": "58741",
+      "kode_pi": "58193"
+    },
+    {
+      "id": "PKL002",
+      "nama_sekolah": "SD NEGERI 59 TANETE",
+      "nama_kamabigus": "A. ALAUDDIN ARSYAM, S.Pd.",
+      "nip_kamabigus": "197401011998031014",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "59038",
+      "kode_pi": "59821"
+    },
+    {
+      "id": "PKL003",
+      "nama_sekolah": "SD NEGERI 60 TANETE",
+      "nama_kamabigus": "TAUFIQ, S.Pd",
+      "nip_kamabigus": "198207032005021003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "60517",
+      "kode_pi": "60942"
+    },
+    {
+      "id": "PKL004",
+      "nama_sekolah": "SD NEGERI 61 BALLEANGING",
+      "nama_kamabigus": "Rudi Adi",
+      "nip_kamabigus": "197810192006041006",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "61892",
+      "kode_pi": "61034"
+    },
+    {
+      "id": "PKL005",
+      "nama_sekolah": "SD NEGERI 62 WAEPEJJE",
+      "nama_kamabigus": "AGUSTINA, S.Pd. Gr",
+      "nip_kamabigus": "198508312011012012",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "62415",
+      "kode_pi": "62780"
+    },
+    {
+      "id": "PKL006",
+      "nama_sekolah": "SD NEGERI 63 CILALLANG",
+      "nama_kamabigus": "ABD. RAHMAN ,J,SPd.,M.Pd",
+      "nip_kamabigus": "197103241993011002",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "63903",
+      "kode_pi": "63158"
+    },
+    {
+      "id": "PKL007",
+      "nama_sekolah": "SD NEGERI 64 BALANGBESSI",
+      "nama_kamabigus": "SULAEHA ANSHAR,S.PdI",
+      "nip_kamabigus": "197612302008012012",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "64327",
+      "kode_pi": "64810"
+    },
+    {
+      "id": "PKL008",
+      "nama_sekolah": "SD NEGERI 65 BALANGRIRI",
+      "nama_kamabigus": "SYAMSIR SYAM, S.Pd",
+      "nip_kamabigus": "196912251999031003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "65704",
+      "kode_pi": "65291"
+    },
+    {
+      "id": "PKL009",
+      "nama_sekolah": "SD NEGERI 66 BALANGRIRI",
+      "nama_kamabigus": "HJ.NURLIAWATI,S.Pd.SD",
+      "nip_kamabigus": "197108121992032008",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "66149",
+      "kode_pi": "66853"
+    },
+    {
+      "id": "PKL010",
+      "nama_sekolah": "SD NEGERI 67 LOISA",
+      "nama_kamabigus": "DEWA HAMZAH, S.Pd",
+      "nip_kamabigus": "197210172006042014",
+      "jumlah_peserta_putra": "Tidak ada",
+      "jumlah_peserta_putri": "Tidak ada",
+      "jumlah_tenda": "2 Tenda (Pa dan Pi)",
+      "catatan": "",
+      "kode_pa": "67580",
+      "kode_pi": "67026"
+    },
+    {
+      "id": "PKL011",
+      "nama_sekolah": "SD NEGERI 68 TIBONA",
+      "nama_kamabigus": "IRMA FATIMAH, S.Pd",
+      "nip_kamabigus": "197209111998032007",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "68914",
+      "kode_pi": "68372"
+    },
+    {
+      "id": "PKL012",
+      "nama_sekolah": "SD NEGERI 69 ANNISIA",
+      "nama_kamabigus": "NURHAENA, S.Pd",
+      "nip_kamabigus": "197011022008012016",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "69403",
+      "kode_pi": "69761"
+    },
+    {
+      "id": "PKL013",
+      "nama_sekolah": "SD NEGERI 70 BULO-BULO",
+      "nama_kamabigus": "HJ.MARLIANA, S.Pd.SD",
+      "nip_kamabigus": "196806161999032002",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "70825",
+      "kode_pi": "70149"
+    },
+    {
+      "id": "PKL014",
+      "nama_sekolah": "SD NEGERI 71 BARUGAE",
+      "nama_kamabigus": "NURAENA, S.Pd.,M.Pd.",
+      "nip_kamabigus": "197802032007012013",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "71391",
+      "kode_pi": "71604"
+    },
+    {
+      "id": "PKL015",
+      "nama_sekolah": "SD NEGERI 72 BAMBAUNGANG",
+      "nama_kamabigus": "ADY ZULFIKAR YUNUS, S.Pd",
+      "nip_kamabigus": "198111062002121002",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "72518",
+      "kode_pi": "72043"
+    },
+    {
+      "id": "PKL016",
+      "nama_sekolah": "SD NEGERI 73 KASESENG",
+      "nama_kamabigus": "ENI ROSDIANI,S.Pd",
+      "nip_kamabigus": "198007020077012009",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "73962",
+      "kode_pi": "73107"
+    },
+    {
+      "id": "PKL017",
+      "nama_sekolah": "SD NEGERI 74 TAMARELLANG",
+      "nama_kamabigus": "Jamaluddin, S.Pd.I., M.Pd",
+      "nip_kamabigus": "196911302002121006",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "74831",
+      "kode_pi": "74259"
+    },
+    {
+      "id": "PKL018",
+      "nama_sekolah": "SD NEGERI 75 PETTUNGNGE",
+      "nama_kamabigus": "MARLINA ,S.Pd",
+      "nip_kamabigus": "1.98003082010012E17",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "75046",
+      "kode_pi": "75913"
+    },
+    {
+      "id": "PKL019",
+      "nama_sekolah": "SD NEGERI 76 BARUGA RIATTANG",
+      "nama_kamabigus": "AZRIFAI,S.Pd.,M.Pd.",
+      "nip_kamabigus": "197404082002121007",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "76384",
+      "kode_pi": "76721"
+    },
+    {
+      "id": "PKL020",
+      "nama_sekolah": "SD NEGERI 77 BONTOBAJU",
+      "nama_kamabigus": "NURLINA,S.Pd",
+      "nip_kamabigus": "198112222007012009",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "77195",
+      "kode_pi": "77640"
+    },
+    {
+      "id": "PKL021",
+      "nama_sekolah": "SD NEGERI 78 BONTOA",
+      "nama_kamabigus": "SAHIDA, S.Pd",
+      "nip_kamabigus": "197304051999032009",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "78502",
+      "kode_pi": "78937"
+    },
+    {
+      "id": "PKL022",
+      "nama_sekolah": "SD NEGERI 79 LAJAE",
+      "nama_kamabigus": "Darmawati,S.Pd",
+      "nip_kamabigus": "197404172006042024",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "79264",
+      "kode_pi": "79815"
+    },
+    {
+      "id": "PKL023",
+      "nama_sekolah": "SD NEGERI 80 BULUKUMPA",
+      "nama_kamabigus": "FATRYUNINGSIH, S.Pd",
+      "nip_kamabigus": "198403232014122003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "80471",
+      "kode_pi": "80936"
+    },
+    {
+      "id": "PKL024",
+      "nama_sekolah": "SD NEGERI 91 MUNTE",
+      "nama_kamabigus": "Muhammad Arman,S.Pd",
+      "nip_kamabigus": "198205032009021006",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "91380",
+      "kode_pi": "91724"
+    },
+    {
+      "id": "PKL025",
+      "nama_sekolah": "SD NEGERI 95 BONTOBULAENG",
+      "nama_kamabigus": "SURYAWATI, S.Pd.SD",
+      "nip_kamabigus": "196901171993032003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "95813",
+      "kode_pi": "95067"
+    },
+    {
+      "id": "PKL026",
+      "nama_sekolah": "SD NEGERI 96 GALUNGBODDONG",
+      "nama_kamabigus": "FATMAWATI, S.Pd.SD.",
+      "nip_kamabigus": "197911162005022009",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "96425",
+      "kode_pi": "96901"
+    },
+    {
+      "id": "PKL027",
+      "nama_sekolah": "SD NEGERI 99 SALASSAE",
+      "nama_kamabigus": "HJ.NURENI,S.Pd.",
+      "nip_kamabigus": "196701162006042003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "99317",
+      "kode_pi": "99862"
+    },
+    {
+      "id": "PKL028",
+      "nama_sekolah": "SD NEGERI 175 BULO-BULO",
+      "nama_kamabigus": "MUHAMMAD NUR AZIS, S.PdI., M.PdI",
+      "nip_kamabigus": "197510012014121003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "17529",
+      "kode_pi": "17584"
+    },
+    {
+      "id": "PKL029",
+      "nama_sekolah": "SD NEGERI 188 BONTO BULAENG",
+      "nama_kamabigus": "BAU ASSENG, S.Pd.SD.,MM",
+      "nip_kamabigus": "197010021989122003",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "18840",
+      "kode_pi": "18893"
+    },
+    {
+      "id": "PKL030",
+      "nama_sekolah": "SD NEGERI 189 BARUGAE",
+      "nama_kamabigus": "HJ. HASNAWATI, S.Pd",
+      "nip_kamabigus": "197007101993092001",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "18961",
+      "kode_pi": "18915"
+    },
+    {
+      "id": "PKL031",
+      "nama_sekolah": "SD NEGERI 209 TANETE",
+      "nama_kamabigus": "ANDI NURFAUSIAH NASIR, S.Pd,M.Pd",
+      "nip_kamabigus": "198307012008012012",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "20938",
+      "kode_pi": "20974"
+    },
+    {
+      "id": "PKL032",
+      "nama_sekolah": "SD NEGERI 210 BONTOMINASA",
+      "nama_kamabigus": "MARDIANA ACHMAD,S.Pd",
+      "nip_kamabigus": "196609091988032021",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "21052",
+      "kode_pi": "21096"
+    },
+    {
+      "id": "PKL033",
+      "nama_sekolah": "SD NEGERI 213 HULO",
+      "nama_kamabigus": "ALIMUDDIN, S.Pd",
+      "nip_kamabigus": "199308292019031010",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "21381",
+      "kode_pi": "21340"
+    },
+    {
+      "id": "PKL034",
+      "nama_sekolah": "SD NEGERI 237 LEMBANG",
+      "nama_kamabigus": "Hasmah,S.Pd.SD",
+      "nip_kamabigus": "196706101986122001",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "23749",
+      "kode_pi": "23705"
+    },
+    {
+      "id": "PKL035",
+      "nama_sekolah": "SD NEGERI 238 MATTOANGING",
+      "nama_kamabigus": "ABDUL RAZAK,S.Pd.SD.",
+      "nip_kamabigus": "198003252010011021",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "23862",
+      "kode_pi": "23817"
+    },
+    {
+      "id": "PKL036",
+      "nama_sekolah": "SD NEGERI 239 SARAJOKO",
+      "nama_kamabigus": "SYAMSUL ANWAR, S.Pd",
+      "nip_kamabigus": "196712311989021014",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "23904",
+      "kode_pi": "23983"
+    },
+    {
+      "id": "PKL037",
+      "nama_sekolah": "SD NEGERI 240 HARUE",
+      "nama_kamabigus": "Hj.MASNAWATI,S.Pd.SD.,M.M.",
+      "nip_kamabigus": "196812311993072006",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "24071",
+      "kode_pi": "24029"
+    },
+    {
+      "id": "PKL038",
+      "nama_sekolah": "SD NEGERI 241 BARUGAE",
+      "nama_kamabigus": "ABD.RAJAB, S.Pd, SD",
+      "nip_kamabigus": "196610092000051001",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "24158",
+      "kode_pi": "24190"
+    },
+    {
+      "id": "PKL039",
+      "nama_sekolah": "SD NEGERI 243 ELLEE",
+      "nama_kamabigus": "RISNAWATI,S.Pd",
+      "nip_kamabigus": "197104091998032008",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "24326",
+      "kode_pi": "24387"
+    },
+    {
+      "id": "PKL040",
+      "nama_sekolah": "SD NEGERI 244 SALASSAE",
+      "nama_kamabigus": "NURAENI,S.Pd",
+      "nip_kamabigus": "197810022008012011",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "24491",
+      "kode_pi": "24435"
+    },
+    {
+      "id": "PKL041",
+      "nama_sekolah": "SD NEGERI 247 PATTOENGANG",
+      "nama_kamabigus": "EDI KRISWAN,S.Pd",
+      "nip_kamabigus": "198411202009021001",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "24708",
+      "kode_pi": "24763"
+    },
+    {
+      "id": "PKL042",
+      "nama_sekolah": "SD NEGERI 278 PAKOMBONG",
+      "nama_kamabigus": "Sry Oktafiana Pratiwi, S.Pd.",
+      "nip_kamabigus": "199210052022212023",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "27852",
+      "kode_pi": "27819"
+    },
+    {
+      "id": "PKL043",
+      "nama_sekolah": "SD NEGERI 280 BONTOMINASA",
+      "nama_kamabigus": "HAERATI, S.Pd.",
+      "nip_kamabigus": "196704051998032006",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "28037",
+      "kode_pi": "28084"
+    },
+    {
+      "id": "PKL044",
+      "nama_sekolah": "SD NEGERI 304 BATUHULANG",
+      "nama_kamabigus": "MARHANI,S.Pd",
+      "nip_kamabigus": "198410112010012033",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "30461",
+      "kode_pi": "30429"
+    },
+    {
+      "id": "PKL045",
+      "nama_sekolah": "SD NEGERI 305 TAGGENTUNG",
+      "nama_kamabigus": "SUARMAN, S.Pd., M.M.",
+      "nip_kamabigus": "198207112005021002",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "30594",
+      "kode_pi": "30518"
+    },
+    {
+      "id": "PKL046",
+      "nama_sekolah": "SD NEGERI 332 PULONGGO",
+      "nama_kamabigus": "AKSAN BASO,S.Pd.",
+      "nip_kamabigus": "197009062001031001",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "33240",
+      "kode_pi": "33287"
+    },
+    {
+      "id": "PKL047",
+      "nama_sekolah": "SD NEGERI 333 TIBONA",
+      "nama_kamabigus": "AGUS SULTAN,S.Pd",
+      "nip_kamabigus": "198908202022211015",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "33315",
+      "kode_pi": "33392"
+    },
+    {
+      "id": "PKL048",
+      "nama_sekolah": "SD NEGERI 334 BINUANG",
+      "nama_kamabigus": "Ari Adam, S.Pd",
+      "nip_kamabigus": "198910252015031004",
+      "jumlah_peserta_putra": "10",
+      "jumlah_peserta_putri": "10",
+      "jumlah_tenda": "1 Tenda di Kapling Putra",
+      "catatan": "",
+      "kode_pa": "33411",
+      "kode_pi": "33422"
+    },
+    {
+      "id": "PKL049",
+      "nama_sekolah": "MIN BALPES",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90184",
+      "kode_pi": "90137"
+    },
+    {
+      "id": "PKL050",
+      "nama_sekolah": "MIS LONRONG",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90246",
+      "kode_pi": "90291"
+    },
+    {
+      "id": "PKL051",
+      "nama_sekolah": "MIS MALLEBBANG",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90315",
+      "kode_pi": "90378"
+    },
+    {
+      "id": "PKL052",
+      "nama_sekolah": "MIS MAROANGING",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90462",
+      "kode_pi": "90409"
+    },
+    {
+      "id": "PKL053",
+      "nama_sekolah": "MIS PAEKA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90537",
+      "kode_pi": "90581"
+    },
+    {
+      "id": "PKL054",
+      "nama_sekolah": "MIS PATTIROANG",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90693",
+      "kode_pi": "90624"
+    },
+    {
+      "id": "PKL055",
+      "nama_sekolah": "MIS SERRE",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90718",
+      "kode_pi": "90750"
+    },
+    {
+      "id": "PKL056",
+      "nama_sekolah": "SMP 14 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "14820",
+      "kode_pi": "14195"
+    },
+    {
+      "id": "PKL057",
+      "nama_sekolah": "SMP 17 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "17463",
+      "kode_pi": "17902"
+    },
+    {
+      "id": "PKL058",
+      "nama_sekolah": "SMP 16 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "16374",
+      "kode_pi": "16815"
+    },
+    {
+      "id": "PKL059",
+      "nama_sekolah": "SMP 44 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "44927",
+      "kode_pi": "44061"
+    },
+    {
+      "id": "PKL060",
+      "nama_sekolah": "SMP 15 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "15309",
+      "kode_pi": "15784"
+    },
+    {
+      "id": "PKL061",
+      "nama_sekolah": "SMP 18 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "18451",
+      "kode_pi": "18903"
+    },
+    {
+      "id": "PKL062",
+      "nama_sekolah": "SMP SATAP 18 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "18724",
+      "kode_pi": "18269"
+    },
+    {
+      "id": "PKL063",
+      "nama_sekolah": "MTsN SAPOBONTO",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90835",
+      "kode_pi": "90871"
+    },
+    {
+      "id": "PKL064",
+      "nama_sekolah": "SMP 47 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "47392",
+      "kode_pi": "47815"
+    },
+    {
+      "id": "PKL065",
+      "nama_sekolah": "SMP ISLAM AL QALAM",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "90946",
+      "kode_pi": "90918"
+    },
+    {
+      "id": "PKL066",
+      "nama_sekolah": "SMAN 2 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "28432",
+      "kode_pi": "21972"
+    },
+    {
+      "id": "PKL067",
+      "nama_sekolah": "MAN 1 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "17321",
+      "kode_pi": "14901"
+    },
+    {
+      "id": "PKL068",
+      "nama_sekolah": "SMAN 14 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "14508",
+      "kode_pi": "14932"
+    },
+    {
+      "id": "PKL069",
+      "nama_sekolah": "SMK 11 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "11470",
+      "kode_pi": "11925"
+    },
+    {
+      "id": "PKL070",
+      "nama_sekolah": "SMK 8 BULUKUMBA",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "83612",
+      "kode_pi": "87142"
+    },
+    {
+      "id": "PKL071",
+      "nama_sekolah": "MA SAPOBONTO",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "91048",
+      "kode_pi": "91093"
+    },
+    {
+      "id": "PKL072",
+      "nama_sekolah": "MA DARUL QALAM",
+      "nama_kamabigus": "",
+      "nip_kamabigus": "",
+      "jumlah_peserta_putra": "",
+      "jumlah_peserta_putri": "",
+      "jumlah_tenda": "",
+      "catatan": "",
+      "kode_pa": "91137",
+      "kode_pi": "91182"
+    }
+  ],
+  "accounts": [
+    {
+      "nama_akun": "admin",
+      "password": "annisia"
+    },
+    {
+      "nama_akun": "SD NEGERI 59 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 60 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 61 BALLEANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 62 WAEPEJJE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 63 CILALLANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 64 BALANGBESSI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 65 BALANGRIRI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 66 BALANGRIRI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 67 LOISA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 68 TIBONA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 69 ANNISIA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 70 BULO-BULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 71 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 72 BAMBAUNGANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 73 KASESENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 74 TAMARELLANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 75 PETTUNGNGE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 76 BARUGA RIATTANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 77 BONTOBAJU",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 78 BONTOA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 79 LAJAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 80 BULUKUMPA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 91 MUNTE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 95 BONTOBULAENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 96 GALUNGBODDONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 99 SALASSAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 175 BULO-BULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 188 BONTO BULAENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 189 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 209 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 210 BONTOMINASA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 213 HULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 237 LEMBANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 238 MATTOANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 239 SARAJOKO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 240 HARUE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 241 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 243 ELLEE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 244 SALASSAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 247 PATTOENGANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 278 PAKOMBONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 280 BONTOMINASA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 304 BATUHULANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 305 TAGGENTUNG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 332 PULONGGO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 333 TIBONA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 334 BINUANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIN BALPES",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS LONRONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS MALLEBBANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS MAROANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS PAEKA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS PATTIROANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS SERRE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 58 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 59 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 60 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 61 BALLEANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 62 WAEPEJJE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 63 CILALLANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 64 BALANGBESSI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 65 BALANGRIRI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 66 BALANGRIRI",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 67 LOISA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 68 TIBONA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 69 ANNISIA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 70 BULO-BULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 71 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 72 BAMBAUNGANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 73 KASESENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 74 TAMARELLANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 75 PETTUNGNGE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 76 BARUGA RIATTANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 77 BONTOBAJU",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 78 BONTOA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 79 LAJAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 80 BULUKUMPA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 91 MUNTE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 95 BONTOBULAENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 96 GALUNGBODDONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 99 SALASSAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 175 BULO-BULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 188 BONTO BULAENG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 189 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 209 TANETE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 210 BONTOMINASA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 213 HULO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 237 LEMBANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 238 MATTOANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 239 SARAJOKO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 240 HARUE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 241 BARUGAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 243 ELLEE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 244 SALASSAE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 247 PATTOENGANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 278 PAKOMBONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 280 BONTOMINASA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 304 BATUHULANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 305 TAGGENTUNG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 332 PULONGGO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 333 TIBONA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SD NEGERI 334 BINUANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIN BALPES",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS LONRONG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS MALLEBBANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS MAROANGING",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS PAEKA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS PATTIROANG",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MIS SERRE",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 14 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 17 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 16 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 44 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 15 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 18 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP SATAP 18 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MTsN SAPOBONTO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 47 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP ISLAM AL QALAM",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 14 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 17 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 16 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 44 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 15 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 18 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP SATAP 18 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MTsN SAPOBONTO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP 47 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMP ISLAM AL QALAM",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMAN 2 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MAN 1 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMAN 14 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMK 11 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMK 8 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MA SAPOBONTO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MA DARUL QALAM",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMAN 2 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MAN 1 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMAN 14 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMK 11 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "SMK 8 BULUKUMBA",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MA SAPOBONTO",
+      "password": "pramuka"
+    },
+    {
+      "nama_akun": "MA DARUL QALAM",
+      "password": "pramuka"
+    }
+  ]
+}

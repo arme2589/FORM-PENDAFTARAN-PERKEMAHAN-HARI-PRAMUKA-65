@@ -1,0 +1,8 @@
+{
+  "name": "Form Pendaftaran Perkemahan Hari Pramuka",
+  "description": "Aplikasi Pendaftaran Perkemahan Hari Pramuka Kwarran Bulukumpa",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
