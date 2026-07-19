@@ -50,4 +50,5 @@ export interface AdminDashboardData {
     sekolah: string;
     catatan: string;
   }>;
+  allRegistrations?: Registration[];
 }

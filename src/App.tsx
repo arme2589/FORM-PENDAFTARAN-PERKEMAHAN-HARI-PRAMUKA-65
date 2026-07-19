@@ -226,7 +226,8 @@ export default function App() {
         smp_mts: tendaPutraSmpMts + tendaPutriSmpMts,
         sma_smk_ma: tendaPutraSmaSmkMa + tendaPutriSmaSmkMa
       },
-      catatanList
+      catatanList,
+      allRegistrations: registrations
     };
   };
 
