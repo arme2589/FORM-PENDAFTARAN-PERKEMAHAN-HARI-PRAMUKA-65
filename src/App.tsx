@@ -345,6 +345,60 @@ export default function App() {
 
     if (isStaticMode) {
       try {
+        // --- AUTO PULL FROM SPREADSHEET BEFORE LOGIN (STATIC MODE) ---
+        if (spreadsheetUrl) {
+          try {
+            console.log("Menarik data terbaru dari Google Sheets sebelum masuk...");
+            const response = await fetch(spreadsheetUrl, { method: "GET" });
+            if (response.ok) {
+              const resData = await response.json();
+              if (resData.status === "success" && Array.isArray(resData.registrations)) {
+                const fetchedRegs = resData.registrations;
+                const localRegs: Registration[] = JSON.parse(localStorage.getItem("registrations") || "[]");
+                const localAccounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+
+                fetchedRegs.forEach((fetched: any) => {
+                  if (!fetched || !fetched.nama_sekolah) return;
+                  let localReg = localRegs.find(
+                    (r) => r.nama_sekolah.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+                  );
+                  if (localReg) {
+                    localReg.nama_kamabigus = fetched.nama_kamabigus || "-";
+                    localReg.nip_kamabigus = fetched.nip_kamabigus || "-";
+                    localReg.jumlah_peserta_putra = fetched.jumlah_peserta_putra || "";
+                    localReg.jumlah_peserta_putri = fetched.jumlah_peserta_putri || "";
+                    localReg.jumlah_tenda = fetched.jumlah_tenda || "";
+                    localReg.catatan = fetched.catatan || "";
+                    localReg.kode_pa = fetched.kode_pa || localReg.kode_pa;
+                    localReg.kode_pi = fetched.kode_pi || localReg.kode_pi;
+                  } else {
+                    localRegs.push(fetched);
+                  }
+
+                  if (fetched.password) {
+                    const accIndex = localAccounts.findIndex(
+                      (acc: any) => acc.nama_akun.trim().toLowerCase() === fetched.nama_sekolah.trim().toLowerCase()
+                    );
+                    if (accIndex !== -1) {
+                      localAccounts[accIndex].password = fetched.password;
+                    } else {
+                      localAccounts.push({ nama_akun: fetched.nama_sekolah, password: fetched.password });
+                    }
+                  }
+                });
+
+                localStorage.setItem("registrations", JSON.stringify(localRegs));
+                localStorage.setItem("accounts", JSON.stringify(localAccounts));
+                setPangkalanList(localRegs.map((r) => r.nama_sekolah));
+                console.log("Data berhasil diperbarui dari Google Sheets!");
+              }
+            }
+          } catch (e) {
+            console.warn("Gagal melakukan sinkronisasi otomatis dari Google Sheets sebelum masuk:", e);
+          }
+        }
+        // --- END OF AUTO PULL ---
+
         let matched = false;
         let role: "peserta" | "admin" = "peserta";
         let regDataMatched: Registration | null = null;
@@ -400,6 +454,15 @@ export default function App() {
     }
 
     try {
+      // --- AUTO PULL FROM SPREADSHEET BEFORE LOGIN (SERVER MODE) ---
+      try {
+        console.log("Menarik data terbaru dari Google Sheets ke server sebelum masuk...");
+        await fetch("/api/pull-from-spreadsheet", { method: "POST" });
+      } catch (e) {
+        console.warn("Gagal menarik data dari spreadsheet sebelum masuk:", e);
+      }
+      // --- END OF AUTO PULL ---
+
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
